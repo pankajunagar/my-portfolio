@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import { CredibilityBar } from "@/components/CredibilityBar";
 import ScrollStory from "@/components/ScrollStory";
 import About from "@/components/About";
 import Services from "@/components/Services";

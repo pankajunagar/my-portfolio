@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Globe, MessageCircle, Download } from "lucide-react";
+import { ArrowUpRight, Globe, Download } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MagneticBtn } from "./ui/MagneticBtn";

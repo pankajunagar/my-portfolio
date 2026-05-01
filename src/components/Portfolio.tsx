@@ -2,8 +2,6 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
 import { projects, Project } from "@/data/projects";
 
 function EditorialProjectCard({ project }: { project: Project }) {

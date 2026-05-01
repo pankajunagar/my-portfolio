@@ -19,7 +19,7 @@ export async function POST(req: Request) {
     try {
       const logoPath = path.join(process.cwd(), 'public/logo.png');
       logoBuffer = await fs.readFile(logoPath);
-    } catch (e) {
+    } catch {
       console.error('Logo file not found, sending without logo');
     }
 
