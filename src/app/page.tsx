@@ -1,6 +1,3 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import { CredibilityBar } from "@/components/CredibilityBar";
@@ -13,28 +10,19 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 export default function Home() {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
-
   return (
-    <main
-      className={`relative transition-opacity duration-1000 ${
-        isLoaded ? "opacity-100" : "opacity-0"
-      }`}
-    >
+    <>
       <Navbar />
-      <Hero />
-      <CredibilityBar />
-      <ScrollStory />
-      <About />
-      <Services />
-      <Portfolio />
-      <Testimonials />
-      <Contact />
-      <Footer />
-    </main>
+      <main className="relative animate-page-fadein">
+        <Hero />
+        <ScrollStory />
+        <About />
+        <Services />
+        <Portfolio />
+        <Testimonials />
+        <Contact />
+        <Footer />
+      </main>
+    </>
   );
 }

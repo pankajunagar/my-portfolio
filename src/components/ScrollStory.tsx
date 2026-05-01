@@ -54,7 +54,7 @@ export default function ScrollStory() {
         <div className="container-max w-full px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Text Content */}
-            <div className="relative z-10 space-y-24 py-20 min-h-[400px]">
+            <div className="relative z-10 space-y-24 py-20 min-h-[400px] ">
               {stories.map((story, index) => {
                 const range = [index / stories.length, (index + 0.2) / stories.length, (index + 0.7) / stories.length, (index + 0.9) / stories.length];
                 const opacity = useTransform(smoothProgress, range, [0, 1, 1, 0]);

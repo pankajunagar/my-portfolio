@@ -73,16 +73,28 @@ export default function Hero() {
     init();
     animate();
 
-    // GSAP Parallax
-    gsap.to(portraitRef.current, {
-      y: 50,
+    // GSAP Parallax with stability
+    const portraitTl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top top",
         end: "bottom top",
-        scrub: true,
+        scrub: 1, 
+        onUpdate: (self) => {
+          if (self.progress < 0.01) {
+            gsap.set(portraitRef.current, { y: 0 });
+          }
+        }
       },
     });
+
+    portraitTl.to(portraitRef.current, {
+      y: 100, // Slightly more pronounced parallax
+      ease: "none"
+    });
+
+    // Refresh triggers to account for navbar transition
+    ScrollTrigger.refresh();
 
     return () => window.removeEventListener("resize", resize);
   }, []);
@@ -96,7 +108,7 @@ export default function Hero() {
     <section
       ref={containerRef}
       id="home"
-      className="relative min-h-screen flex items-center bg-background overflow-hidden"
+      className="relative min-h-screen lg:min-h-screen flex items-center bg-background overflow-hidden"
     >
       {/* Animated Galaxy Background Layer */}
       <canvas
@@ -132,16 +144,16 @@ export default function Hero() {
         className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-violet-500/10 blur-[150px] rounded-full z-0"
       />
 
-      <div className="container-max relative z-20 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center pt-32 lg:pt-32 pb-20">
+      <div className="container-max relative z-20 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center pt-16 lg:pt-32 pb-16 lg:pb-20">
         {/* Left: Premium Framed Image */}
         <motion.div
           ref={portraitRef}
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-          className="relative flex justify-center lg:justify-start pt-10"
+          className="relative flex justify-center lg:justify-start"
         >
-          <div className="relative w-full max-w-[420px] aspect-[4/5] group rounded-[2rem] overflow-hidden bg-[#111] border border-white/5 shadow-2xl">
+          <div className="relative w-full max-w-[300px] sm:max-w-[350px] lg:max-w-[420px] aspect-[4/5] group rounded-[2rem] overflow-hidden bg-[#111] border border-white/5 shadow-2xl mx-auto lg:mx-0">
             {/* The Image */}
             <div className="relative w-full h-full">
               <img
@@ -227,7 +239,7 @@ export default function Hero() {
               className="px-8 py-4 bg-transparent text-foreground font-semibold rounded-xl border border-border hover:bg-muted transition-colors group flex items-center gap-2"
             >
               <Download className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />
-              Download Resume
+              Download CV
             </a>
           </div>
         </motion.div>

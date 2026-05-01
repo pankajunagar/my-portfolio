@@ -45,11 +45,11 @@ function EditorialProjectCard({ project }: { project: Project }) {
             <p className="text-white/60 font-medium leading-relaxed max-w-2xl text-sm lg:text-base">
               {project.shortDescription}
             </p>
-            <div className="flex flex-wrap gap-2 pt-2">
+            {/* <div className="flex flex-wrap gap-2 pt-2">
               {project.techStack.map(tech => (
                 <span key={tech} className="text-[10px] font-bold text-white/40 uppercase tracking-widest">{tech}</span>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* <Link href={`/work/${project.slug}`} className="shrink-0 pointer-events-auto self-end mt-2">
