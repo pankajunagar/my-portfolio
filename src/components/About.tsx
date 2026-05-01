@@ -44,7 +44,7 @@ export default function About() {
               <div className="space-y-6">
                 <p className="text-2xl sm:text-3xl text-foreground font-bold leading-tight tracking-tight">
                   With 8+ years of expertise, I transform complex requirements
-                  into seamless digital products. dfgsbggnfndfg nfgndfg dfbfdb
+                  into seamless digital products.
                 </p>
                 <div className="h-1 w-16 bg-primary rounded-full" />
               </div>
