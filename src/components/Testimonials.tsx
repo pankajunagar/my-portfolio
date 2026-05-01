@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect, useCallback } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { motion, useInView, AnimatePresence, PanInfo } from "framer-motion";
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 const testimonials = [
@@ -73,6 +73,18 @@ export default function Testimonials() {
     );
   };
 
+  const handleDragEnd = (info: PanInfo) => {
+    const { offset, velocity } = info;
+    
+    if (Math.abs(offset.x) > 50 || Math.abs(velocity.x) > 500) {
+      if (offset.x > 0) {
+        prevSlide();
+      } else {
+        nextSlide();
+      }
+    }
+  };
+
   useEffect(() => {
     if (!isAutoPlaying) return;
     const interval = setInterval(nextSlide, 5000);
@@ -132,7 +144,13 @@ export default function Testimonials() {
           onMouseLeave={() => setIsAutoPlaying(true)}
         >
           {/* Main Card */}
-          <div className="glass-card p-8 sm:p-12 lg:p-16 relative overflow-hidden min-h-[350px] shadow-sm shadow-primary/5">
+          <motion.div 
+            className="glass-card p-8 sm:p-12 lg:p-16 relative overflow-hidden min-h-[350px] shadow-sm shadow-primary/5 cursor-grab active:cursor-grabbing"
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.3}
+            onDragEnd={(event: any, info: PanInfo) => handleDragEnd(info)}
+          >
             {/* Quote icon */}
             <div className="absolute top-6 right-8 text-primary opacity-5">
               <Quote className="w-24 h-24 rotate-12" />
@@ -185,7 +203,7 @@ export default function Testimonials() {
                 </div>
               </motion.div>
             </AnimatePresence>
-          </div>
+          </motion.div>
 
           {/* Navigation Controls */}
           <div className="flex items-center justify-between mt-10">

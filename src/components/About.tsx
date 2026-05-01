@@ -39,7 +39,7 @@ export default function About() {
               
               <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
                 <p>
-                  As a Senior Hybrid & Web Specialist, I have architected global systems for enterprise leaders like <span className="text-foreground font-semibold italic">ePRINTit</span> and high-performance mobile apps for elite training platforms.
+                  As a Senior Hybrid & Web Specialist, I have architected global systems for enterprise leaders and high-performance mobile apps for elite training platforms.
                 </p>
                 <p>
                   My philosophy is simple: Technical excellence is the baseline. The real challenge is crafting an experience that feels <span className="text-foreground font-semibold">effortless and human.</span>
