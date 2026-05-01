@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import {
@@ -7,9 +8,6 @@ import {
   Globe,
   Database,
   Palette,
-  Code2,
-  Wrench,
-  TestTube,
 } from "lucide-react";
 
 // ── Expertise Cards ──────────────────────────────────────────────────────────
@@ -47,78 +45,6 @@ const services = [
     gradient: "from-orange-500 to-rose-500",
   },
 ];
-
-// ── Skill Categories ─────────────────────────────────────────────────────────
-const skillCategories = [
-  {
-    id: "frontend",
-    label: "Technologies",
-    icon: <Code2 className="w-4 h-4" />,
-    color: "from-blue-500 to-cyan-400",
-    glow: "rgba(59,130,246,0.18)",
-    skills: [
-      "Angular", "React", "Vue", "Next.js", "Nuxt.js",
-      "TypeScript", "JavaScript", "HTML", "CSS", "SCSS",
-    ],
-  },
-  {
-    id: "mobile",
-    label: "Mobile & Backend",
-    icon: <Smartphone className="w-4 h-4" />,
-    color: "from-violet-500 to-purple-400",
-    glow: "rgba(139,92,246,0.18)",
-    skills: ["Ionic", "Capacitor", "REST APIs", "GraphQL", "Firebase"],
-  },
-  {
-    id: "database",
-    label: "Database & Cloud",
-    icon: <Database className="w-4 h-4" />,
-    color: "from-emerald-500 to-teal-400",
-    glow: "rgba(16,185,129,0.18)",
-    skills: ["MySQL", "PostgreSQL", "MongoDB", "AWS", "Docker"],
-  },
-  {
-    id: "testing",
-    label: "Testing",
-    icon: <TestTube className="w-4 h-4" />,
-    color: "from-rose-500 to-pink-400",
-    glow: "rgba(244,63,94,0.18)",
-    skills: ["Jest", "Cypress"],
-  },
-  {
-    id: "tools",
-    label: "Tools & Workflow",
-    icon: <Wrench className="w-4 h-4" />,
-    color: "from-amber-500 to-orange-400",
-    glow: "rgba(245,158,11,0.18)",
-    skills: ["Git", "GitHub", "Webflow Designer", "CI/CD", "Agile/Scrum", "ChatGPT", "Cursor"],
-  },
-];
-
-// ── Skill Badge ───────────────────────────────────────────────────────────────
-interface SkillBadgeProps {
-  name: string;
-  index: number;
-  color: string;
-  isInView: boolean;
-}
-
-function SkillBadge({ name, index, color, isInView }: SkillBadgeProps) {
-  return (
-    <motion.span
-      initial={{ opacity: 0, scale: 0.85, y: 8 }}
-      animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
-      transition={{ duration: 0.35, delay: index * 0.055, ease: [0.22, 1, 0.36, 1] }}
-      whileHover={{ scale: 1.07, y: -2 }}
-      className="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:border-white/25 hover:bg-white/10 text-sm font-medium text-foreground/75 hover:text-foreground transition-all duration-300 cursor-default select-none backdrop-blur-sm"
-    >
-      <span
-        className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${color} group-hover:scale-125 transition-transform duration-300 flex-shrink-0`}
-      />
-      {name}
-    </motion.span>
-  );
-}
 
 // ── Main Component ────────────────────────────────────────────────────────────
 export default function Services() {
@@ -216,18 +142,18 @@ export default function Services() {
         {/* ── High-Impact Tech Grid ── */}
         <div className="flex flex-wrap justify-center gap-4 mb-20 max-w-6xl mx-auto">
           {[
-            { name: "Angular", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" },
-            { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-            { name: "Vue", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" },
-            { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
-            { name: "Nuxt.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-original.svg" },
-            { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
-            { name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
-            { name: "HTML5", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
-            { name: "CSS3", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
-            { name: "Ionic", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ionic/ionic-original.svg" },
-            { name: "Firebase", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" },
-            { name: "GraphQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg" },
+            { name: "Angular", icon: "/tech/angular.svg" },
+            { name: "React", icon: "/tech/react.svg" },
+            { name: "Vue", icon: "/tech/vue.svg" },
+            { name: "Next.js", icon: "/tech/nextjs.svg" },
+            { name: "Nuxt.js", icon: "/tech/nuxtjs.svg" },
+            { name: "TypeScript", icon: "/tech/typescript.svg" },
+            { name: "JavaScript", icon: "/tech/javascript.svg" },
+            { name: "HTML5", icon: "/tech/html5.svg" },
+            { name: "CSS3", icon: "/tech/css3.svg" },
+            { name: "Ionic", icon: "/tech/ionic.svg" },
+            { name: "Firebase", icon: "/tech/firebase.svg" },
+            { name: "GraphQL", icon: "/tech/graphql.svg" },
           ].map((tech, i) => (
             <motion.div
               key={tech.name}
@@ -238,9 +164,11 @@ export default function Services() {
               className="w-28 h-28 lg:w-36 lg:h-36 rounded-2xl bg-white/[0.02] border border-white/5 flex flex-col items-center justify-center gap-3 transition-all duration-300 group cursor-default shadow-sm"
             >
               <div className="w-10 h-10 lg:w-14 lg:h-14 relative flex items-center justify-center">
-                <img 
+                <Image 
                   src={tech.icon} 
                   alt={tech.name} 
+                  width={56}
+                  height={56}
                   className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500 filter brightness-90 contrast-125" 
                 />
               </div>

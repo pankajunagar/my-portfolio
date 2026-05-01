@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
-import { ThemeProvider } from "@/components/ThemeProvider";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
 import { CustomCursor } from "@/components/CustomCursor";
@@ -52,18 +51,11 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${geistMono.variable} font-sans antialiased bg-background text-foreground selection:bg-primary/30 selection:text-primary transition-colors duration-300`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          forcedTheme="dark"
-          disableTransitionOnChange
-        >
-          <CustomCursor />
-          <div className="noise-bg min-h-screen">
-            <ScrollProgressBar />
-            <SmoothScroll>{children}</SmoothScroll>
-          </div>
-        </ThemeProvider>
+        <CustomCursor />
+        <div className="noise-bg min-h-screen">
+          <ScrollProgressBar />
+          <SmoothScroll>{children}</SmoothScroll>
+        </div>
       </body>
     </html>
   );

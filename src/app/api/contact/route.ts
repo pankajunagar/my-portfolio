@@ -1,3 +1,4 @@
+
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import fs from 'fs/promises';
@@ -26,13 +27,13 @@ export async function POST(req: Request) {
     await resend.emails.send({
       from: 'Portfolio <onboarding@resend.dev>',
       to: 'pankajunagar007@gmail.com',
-      reply_to: email,
+      replyTo: email,
       subject: `New Message: ${subject}`,
       attachments: logoBuffer ? [
         {
           filename: 'logo.png',
           content: logoBuffer,
-          cid: 'logo'
+          contentId: 'logo'
         }
       ] : [],
       html: `

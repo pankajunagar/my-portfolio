@@ -149,7 +149,7 @@ export default function Testimonials() {
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.3}
-            onDragEnd={(event: any, info: PanInfo) => handleDragEnd(info)}
+            onDragEnd={(_, info: PanInfo) => handleDragEnd(info)}
           >
             {/* Quote icon */}
             <div className="absolute top-6 right-8 text-primary opacity-5">

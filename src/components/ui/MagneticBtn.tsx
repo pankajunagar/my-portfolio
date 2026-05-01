@@ -4,8 +4,12 @@ import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-interface MagneticBtnProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface MagneticBtnProps {
   children: React.ReactNode;
+  onClick?: () => void;
+  disabled?: boolean;
+  form?: string;
+  formAction?: string | ((formData: FormData) => void | Promise<void>);
   className?: string;
   magneticIntensity?: number;
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
@@ -74,9 +75,11 @@ export default function Navbar() {
               whileTap={{ scale: 0.98 }}
             >
               <div className="flex items-center gap-3">
-                <img 
+                <Image 
                   src="/logo.svg" 
                   alt="PU Logo" 
+                  width={32}
+                  height={32}
                   className="w-8 h-8 lg:w-10 lg:h-10 object-contain"
                 />
                 <span className="text-xl lg:text-2xl font-black tracking-tight text-foreground uppercase">

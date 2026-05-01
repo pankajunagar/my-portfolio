@@ -1,8 +1,11 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { projects, Project } from "@/data/projects";
+
+const MotionImage = motion.create(Image);
 
 function EditorialProjectCard({ project }: { project: Project }) {
   const ref = useRef(null);
@@ -20,10 +23,11 @@ function EditorialProjectCard({ project }: { project: Project }) {
     >
       {/* Background Image with Parallax */}
       <div className="absolute inset-0 overflow-hidden rounded-3xl bg-white/[0.02]">
-        <motion.img 
+        <MotionImage 
           style={{ y }}
           src={project.image} 
           alt={project.title} 
+          fill
           className="w-full h-[120%] object-cover scale-100 group-hover:scale-105 transition-transform duration-1000 ease-out origin-center"
         />
         {/* Dark gradient overlay for readability */}

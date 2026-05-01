@@ -58,7 +58,7 @@
       @apply bg-gradient-to-br from-primary via-primary-400 to-primary-300 bg-clip-text text-transparent;
     }
   
-    .noise-bg {
+    /* .noise-bg {
       @apply relative;
     }
   
@@ -67,7 +67,7 @@
       @apply fixed inset-0 z-[100] pointer-events-none opacity-[0.03];
       background-image: url("https://grainy-gradients.vercel.app/noise.svg");
       filter: contrast(150%) brightness(150%);
-    }
+    } */
   
     #scroll-progress {
       @apply fixed top-0 left-0 h-[2px] bg-primary z-[60] transition-all;

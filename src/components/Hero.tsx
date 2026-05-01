@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { ArrowUpRight, Globe, Download } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -156,22 +157,24 @@ export default function Hero() {
           <div className="relative w-full max-w-[300px] sm:max-w-[350px] lg:max-w-[420px] aspect-[4/5] group rounded-[2rem] overflow-hidden bg-[#111] border border-white/5 shadow-2xl mx-auto lg:mx-0">
             {/* The Image */}
             <div className="relative w-full h-full">
-              <img
+              <Image
                 src="/pankaj.png"
                 alt="Pankaj Unagar"
+                fill
+                priority
                 className="w-full h-full object-cover object-top grayscale opacity-90 transition-all duration-700 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105"
               />
             </div>
 
             {/* Subtle Overlay / Scanline Effect */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
-            <div
+            {/* <div
               className="absolute inset-0 opacity-[0.03] pointer-events-none"
               style={{
                 backgroundImage:
                   'url("https://grainy-gradients.vercel.app/noise.svg")',
               }}
-            />
+            /> */}
           </div>
         </motion.div>
 
