@@ -26,7 +26,7 @@ export function CustomCursor() {
         target.closest("button") ||
         window.getComputedStyle(target).cursor === "pointer";
       
-      setIsHovering(isClickable);
+      setIsHovering(Boolean(isClickable));
     };
 
     window.addEventListener("mousemove", updateMousePosition);
