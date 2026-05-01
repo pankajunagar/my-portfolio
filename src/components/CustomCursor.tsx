@@ -49,7 +49,7 @@ export function CustomCursor() {
           y: mousePosition.y - 6,
           scale: isHovering ? 0.5 : 1,
         }}
-        transition={{ type: "spring", stiffness: 1000, damping: 40, mass: 0.1 }}
+        transition={{ type: "spring", stiffness: 2000, damping: 25, mass: 0.05 }}
       />
       <motion.div
         className="fixed top-0 left-0 w-10 h-10 border border-primary/50 rounded-full pointer-events-none z-[9998] hidden lg:block"
@@ -59,7 +59,7 @@ export function CustomCursor() {
           scale: isHovering ? 1.5 : 1,
           backgroundColor: isHovering ? "rgba(3,142,199,0.1)" : "transparent",
         }}
-        transition={{ type: "spring", stiffness: 400, damping: 30, mass: 0.5 }}
+        transition={{ type: "spring", stiffness: 800, damping: 20, mass: 0.3 }}
       />
     </>
   );
