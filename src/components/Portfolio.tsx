@@ -18,7 +18,7 @@ function EditorialProjectCard({ project }: { project: Project }) {
       ref={ref}
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
+      transition={{ duration: 0.2, ease: [0.21, 0.47, 0.32, 0.98] }}
       className="group block w-full relative h-[45vh] min-h-[350px] max-h-[500px] rounded-3xl overflow-hidden mb-8"
     >
       {/* Background Image with Parallax */}

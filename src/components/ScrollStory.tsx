@@ -119,7 +119,7 @@ function StoryVisual({ story, index, total, progress }: StoryTextProps) {
       <div className="relative w-full max-w-xl aspect-[16/11] group">
         <motion.div
           animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
           className="absolute -top-10 -left-10 z-20 glass-card p-4 rounded-2xl border-white/20 shadow-2xl backdrop-blur-3xl"
         >
            <div className="flex items-center gap-3">
@@ -130,7 +130,7 @@ function StoryVisual({ story, index, total, progress }: StoryTextProps) {
 
         <motion.div
           animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          transition={{ duration: 1.25, repeat: Infinity, ease: "easeInOut", delay: 1 }}
           className="absolute -bottom-10 -right-10 z-20 glass-card p-6 rounded-2xl border-white/20 shadow-2xl backdrop-blur-3xl"
         >
            <div className="space-y-2">
@@ -176,7 +176,7 @@ export default function ScrollStory() {
           <h2 className="text-[20vw] font-black uppercase">Storytelling</h2>
         </div>
 
-        <div className="container-max w-full px-4 sm:px-6 lg:px-8 h-full">
+        <div className="container-max w-full px-4 sm:px-6 lg:px-8 h-full lg:h-auto">
           <div className="grid lg:grid-cols-2 gap-0 lg:gap-20 items-center">
             {/* Text Content */}
             <div className="relative z-10 space-y-24 py-20 min-h-[400px] ">

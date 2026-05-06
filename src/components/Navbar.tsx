@@ -54,7 +54,7 @@ export default function Navbar() {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.15, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
             ? "bg-black/80 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.2)] py-4"
@@ -111,7 +111,7 @@ export default function Navbar() {
                     <motion.div
                       layoutId="activeNav"
                       className="absolute inset-0 bg-primary/10 rounded-lg border border-primary/20"
-                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.15 }}
                     />
                   )}
                 </motion.a>
@@ -163,7 +163,7 @@ export default function Navbar() {
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", bounce: 0, duration: 0.4 }}
+              transition={{ type: "spring", bounce: 0, duration: 0.1 }}
               className="absolute right-0 top-0 bottom-0 w-[280px] bg-dark-950/95 backdrop-blur-2xl border-l border-white/[0.06] p-6 pt-24"
             >
               <div className="flex flex-col gap-2">

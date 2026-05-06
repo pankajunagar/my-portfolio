@@ -15,7 +15,7 @@ export function CredibilityBar() {
 
         <motion.div
           animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
           className="flex gap-20 items-center min-w-max px-10"
         >
           {/* Duplicate the array for seamless scrolling */}

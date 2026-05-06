@@ -78,7 +78,7 @@ export default function Services() {
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.2 }}
               className="text-3xl lg:text-5xl font-bold text-foreground tracking-tight leading-tight"
             >
               Turning Complexity <br /> Into{" "}
@@ -103,7 +103,7 @@ export default function Services() {
               key={service.id}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
+              transition={{ duration: 0.2, delay: index * 0.025 }}
               whileHover={{ y: -10, scale: 1.02 }}
               className="group relative p-8 glass-card rounded-[32px] overflow-hidden border-white/5 hover:border-primary/30 transition-all duration-500 cursor-default shadow-lg hover:shadow-primary/5"
             >
@@ -129,7 +129,7 @@ export default function Services() {
         <motion.div
           initial={{ opacity: 0, scaleX: 0 }}
           animate={isInView ? { opacity: 1, scaleX: 1 } : {}}
-          transition={{ duration: 1, delay: 0.5 }}
+          transition={{ duration: 0.4, delay: 0.125 }}
           className="relative flex items-center gap-6 my-16 origin-left"
         >
           <div className="flex-1 h-px bg-gradient-to-r from-white/10 via-primary/30 to-white/10" />
@@ -185,7 +185,7 @@ export default function Services() {
             {/* Row 1 */}
             <motion.div 
               animate={{ x: [0, -1400] }}
-              transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
+              transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
               className="flex whitespace-nowrap gap-6"
             >
               {[...Array(2)].map((_, i) => (
@@ -208,7 +208,7 @@ export default function Services() {
             {/* Row 2 (Reverse) */}
             <motion.div 
               animate={{ x: [-1400, 0] }}
-              transition={{ repeat: Infinity, duration: 45, ease: "linear" }}
+              transition={{ repeat: Infinity, duration: 11.25, ease: "linear" }}
               className="flex whitespace-nowrap gap-6"
             >
               {[...Array(2)].map((_, i) => (

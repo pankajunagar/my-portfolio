@@ -107,7 +107,7 @@ export default function Contact() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.125 }}
             className="flex items-center justify-center gap-3 mb-4"
           >
             <div className="w-8 h-[1px] bg-primary" />
@@ -120,7 +120,7 @@ export default function Contact() {
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: 0.125, delay: 0.1 }}
             className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4 tracking-tight"
           >
             Let&apos;s <span className="text-primary">Connect</span>
@@ -129,7 +129,7 @@ export default function Contact() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.125, delay: 0.2 }}
             className="text-muted-foreground text-lg max-w-2xl mx-auto"
           >
             Have a project in mind or want to collaborate? I&apos;d love to hear
@@ -142,7 +142,7 @@ export default function Contact() {
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.15, delay: 0.3 }}
             className="lg:col-span-2 space-y-6"
           >
             <div className="glass-card p-8 space-y-6 shadow-sm shadow-primary/5">
@@ -213,7 +213,7 @@ export default function Contact() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.5 }}
+              transition={{ duration: 0.125, delay: 0.5 }}
               className="glass-card p-6"
             >
               <div className="flex items-center gap-3">
@@ -237,7 +237,7 @@ export default function Contact() {
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.15, delay: 0.1 }}
             className="lg:col-span-3"
           >
             <form

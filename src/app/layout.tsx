@@ -5,6 +5,7 @@ import "./globals.css";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
 import { CustomCursor } from "@/components/CustomCursor";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -52,6 +53,7 @@ export default function RootLayout({
         className={`${inter.variable} ${geistMono.variable} font-sans antialiased bg-background text-foreground selection:bg-primary/30 selection:text-primary transition-colors duration-300`}
       >
         <CustomCursor />
+        <WhatsAppButton />
         <div className="noise-bg min-h-screen">
           <ScrollProgressBar />
           <SmoothScroll>{children}</SmoothScroll>

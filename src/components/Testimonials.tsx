@@ -105,7 +105,7 @@ export default function Testimonials() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.125 }}
             className="flex items-center justify-center gap-3 mb-4"
           >
             <div className="w-8 h-[1px] bg-primary" />
@@ -118,7 +118,7 @@ export default function Testimonials() {
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: 0.125, delay: 0.1 }}
             className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4 tracking-tight"
           >
             Client <span className="text-primary">Reviews</span>
@@ -127,7 +127,7 @@ export default function Testimonials() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.125, delay: 0.2 }}
             className="text-muted-foreground text-lg max-w-2xl mx-auto"
           >
             What clients and colleagues say about working with me
@@ -138,7 +138,7 @@ export default function Testimonials() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.15, delay: 0.3 }}
           className="relative max-w-4xl mx-auto px-4"
           onMouseEnter={() => setIsAutoPlaying(false)}
           onMouseLeave={() => setIsAutoPlaying(true)}
@@ -163,7 +163,7 @@ export default function Testimonials() {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: 0.1 }}
               >
                 {/* Stars */}
                 <div className="flex gap-1 mb-8">
