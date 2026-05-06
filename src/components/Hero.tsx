@@ -145,7 +145,7 @@ export default function Hero() {
         className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-violet-500/10 blur-[150px] rounded-full z-0"
       />
 
-      <div className="container-max relative z-20 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center pt-16 lg:pt-32 pb-16 lg:pb-20">
+      <div className="container-max relative z-20 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center pt-24 lg:pt-32 pb-16 lg:pb-20">
         {/* Left: Premium Framed Image */}
         <motion.div
           ref={portraitRef}

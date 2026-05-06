@@ -66,7 +66,7 @@ export default function Services() {
       <div className="container-max relative z-10" ref={sectionRef}>
 
         {/* ── Header ── */}
-        <div className="flex flex-col lg:flex-row justify-between items-end gap-8 mb-20">
+        <div className="flex flex-col lg:flex-row justify-between  gap-8 mb-20">
           <div className="max-w-2xl">
             <motion.span
               initial={{ opacity: 0 }}

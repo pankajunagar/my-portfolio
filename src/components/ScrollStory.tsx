@@ -176,8 +176,8 @@ export default function ScrollStory() {
           <h2 className="text-[20vw] font-black uppercase">Storytelling</h2>
         </div>
 
-        <div className="container-max w-full px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="container-max w-full px-4 sm:px-6 lg:px-8 h-full">
+          <div className="grid lg:grid-cols-2 gap-0 lg:gap-20 items-center">
             {/* Text Content */}
             <div className="relative z-10 space-y-24 py-20 min-h-[400px] ">
               {stories.map((story, index) => (
