@@ -179,55 +179,79 @@ export default function Services() {
           ))}
         </div>
 
-        {/* ── Infinite Marquee Skills ── */}
-        <div className="relative w-full overflow-hidden py-6 before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-32 before:bg-gradient-to-r before:from-background before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-32 after:bg-gradient-to-l after:after:from-background after:to-transparent">
-          <div className="flex flex-col gap-8">
-            {/* Row 1 */}
-            <motion.div 
-              animate={{ x: [0, -1400] }}
-              transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
-              className="flex whitespace-nowrap gap-6"
-            >
-              {[...Array(2)].map((_, i) => (
-                <div key={i} className="flex gap-6">
-                  {[
-                    "MySQL", "PostgreSQL", "MongoDB", "AWS", "Docker", "REST APIs", "Capacitor",
-                    "MySQL", "PostgreSQL", "MongoDB", "AWS", "Docker", "REST APIs", "Capacitor"
-                  ].map((skill, idx) => (
-                    <span 
-                      key={`${skill}-${idx}`}
-                      className="px-8 py-3 rounded-full bg-white/[0.05] border border-white/10 text-xs font-bold uppercase tracking-widest text-white hover:text-primary hover:border-primary/50 transition-all cursor-default"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              ))}
-            </motion.div>
+      </div>
 
-            {/* Row 2 (Reverse) */}
-            <motion.div 
-              animate={{ x: [-1400, 0] }}
-              transition={{ repeat: Infinity, duration: 11.25, ease: "linear" }}
-              className="flex whitespace-nowrap gap-6"
-            >
-              {[...Array(2)].map((_, i) => (
-                <div key={i} className="flex gap-6">
-                  {[
-                    "Jest", "Cypress", "Git", "GitHub", "Webflow Designer", "CI/CD", "Agile/Scrum", "ChatGPT", "Cursor",
-                    "SCSS", "Jest", "Cypress", "Git", "GitHub", "Webflow Designer", "CI/CD", "Agile/Scrum"
-                  ].map((skill, idx) => (
-                    <span 
-                      key={`${skill}-${idx}`}
-                      className="px-8 py-3 rounded-full bg-white/[0.05] border border-white/10 text-sm font-bold uppercase tracking-widest text-white hover:text-primary hover:border-primary/50 transition-all cursor-default"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              ))}
-            </motion.div>
-          </div>
+      {/* ── Infinite Marquee Skills (Full Layout) ── */}
+      <div className="relative mt-12 w-full overflow-hidden py-10 before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-40 before:bg-gradient-to-r before:from-background before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-40 after:bg-gradient-to-l after:from-background after:to-transparent">
+        <div className="flex flex-col gap-6">
+          {/* Row 1: Backend & Infrastructure */}
+          <motion.div 
+            animate={{ x: [0, -1600] }}
+            transition={{ repeat: Infinity, duration: 35, ease: "linear" }}
+            className="flex whitespace-nowrap gap-4"
+          >
+            {[...Array(2)].map((_, i) => (
+              <div key={i} className="flex gap-4">
+                {[
+                  "MySQL", "PostgreSQL", "MongoDB", "AWS S3", "Docker", "Firebase", "Supabase", "Redis", "Google Cloud", "Nginx",
+                  "MySQL", "PostgreSQL", "MongoDB", "AWS S3", "Docker", "Firebase", "Supabase", "Redis", "Google Cloud", "Nginx"
+                ].map((skill, idx) => (
+                  <span 
+                    key={`${skill}-${idx}`}
+                    className="px-8 py-3 rounded-full bg-white/[0.05] border border-white/10 text-xs font-bold uppercase tracking-widest text-white hover:text-primary hover:border-primary/50 transition-all cursor-default"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            ))}
+          </motion.div>
+
+          {/* Row 2: Mobile & Core Tech (Reverse) */}
+          <motion.div 
+            animate={{ x: [-1600, 0] }}
+            transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
+            className="flex whitespace-nowrap gap-4"
+          >
+            {[...Array(2)].map((_, i) => (
+              <div key={i} className="flex gap-4">
+                {[
+                  "Capacitor", "Ionic", "Cordova", "REST APIs", "GraphQL", "Socket.io", "WebRTC", "OAuth 2.0", "Stripe", "Microservices",
+                  "Capacitor", "Ionic", "Cordova", "REST APIs", "GraphQL", "Socket.io", "WebRTC", "OAuth 2.0", "Stripe", "Microservices"
+                ].map((skill, idx) => (
+                  <span 
+                    key={`${skill}-${idx}`}
+                    className="px-8 py-3 rounded-full bg-white/[0.05] border border-white/10 text-xs font-bold uppercase tracking-widest text-primary hover:text-white hover:border-white/50 transition-all cursor-default"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            ))}
+          </motion.div>
+
+          {/* Row 3: Tools & Methodologies */}
+          <motion.div 
+            animate={{ x: [0, -1600] }}
+            transition={{ repeat: Infinity, duration: 45, ease: "linear" }}
+            className="flex whitespace-nowrap gap-4"
+          >
+            {[...Array(2)].map((_, i) => (
+              <div key={i} className="flex gap-4">
+                {[
+                  "Jest", "Cypress", "GitLab", "GitHub Actions", "CI/CD", "Agile", "Storybook", "Figma", "Webflow", "Vercel",
+                  "Jest", "Cypress", "GitLab", "GitHub Actions", "CI/CD", "Agile", "Storybook", "Figma", "Webflow", "Vercel"
+                ].map((skill, idx) => (
+                  <span 
+                    key={`${skill}-${idx}`}
+                    className="px-8 py-3 rounded-full bg-white/[0.05] border border-white/10 text-xs font-bold uppercase tracking-widest text-white hover:text-primary hover:border-primary/50 transition-all cursor-default"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>
