@@ -6,6 +6,10 @@ import { SmoothScroll } from "@/components/SmoothScroll";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
 import { CustomCursor } from "@/components/CustomCursor";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
+
 
 const inter = Inter({
   subsets: ["latin"],
@@ -152,6 +156,8 @@ export default function RootLayout({
         <div className="noise-bg min-h-screen">
           <ScrollProgressBar />
           <SmoothScroll>{children}</SmoothScroll>
+          <Analytics />
+          <SpeedInsights />
         </div>
       </body>
     </html>
