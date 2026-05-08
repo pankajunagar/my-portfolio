@@ -78,7 +78,7 @@ export default function Services() {
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.4 }}
               className="text-3xl lg:text-5xl font-bold text-foreground tracking-tight leading-tight"
             >
               Turning Complexity <br /> Into{" "}
@@ -88,7 +88,7 @@ export default function Services() {
           <motion.p
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.4 }}
+            transition={{ delay: 0.2 }}
             className="text-lg text-muted-foreground max-w-sm"
           >
             I specialize in deeply technical solutions wrapped in elegant,

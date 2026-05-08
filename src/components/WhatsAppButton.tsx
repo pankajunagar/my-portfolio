@@ -14,7 +14,7 @@ export default function WhatsAppButton() {
         repeat: Infinity, 
         ease: "easeInOut" 
       }}
-      className="fixed bottom-6 right-6 lg:bottom-10 lg:right-10 z-[9999] flex items-center gap-2 p-3 bg-black/80 border border-white/10 rounded-2xl text-white hover:border-white/20 hover:bg-white/5 transition-all shadow-2xl backdrop-blur-md"
+        className="fixed bottom-10 right-10 z-[9999] flex items-center gap-2 px-3 py-3 bg-black border border-white/10 rounded-3xl text-white hover:border-white/20 hover:bg-white/5 transition-all shadow-lg backdrop-blur-md"
       aria-label="Contact on WhatsApp"
     >
       <svg className="w-8 h-8" fill="#25D366" viewBox="0 0 24 24">
