@@ -9,15 +9,20 @@ export function CustomCursor() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Only show on desktop
-    if (window.innerWidth < 1024) return;
-    setIsVisible(true);
+    const checkMobile = () => {
+      setIsVisible(window.innerWidth >= 1024);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
 
     const updateMousePosition = (e: MouseEvent) => {
+      if (window.innerWidth < 1024) return;
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
     const handleMouseOver = (e: MouseEvent) => {
+      if (window.innerWidth < 1024) return;
       const target = e.target as HTMLElement;
       const isClickable = 
         target.tagName.toLowerCase() === "a" ||
@@ -33,6 +38,7 @@ export function CustomCursor() {
     window.addEventListener("mouseover", handleMouseOver);
 
     return () => {
+      window.removeEventListener("resize", checkMobile);
       window.removeEventListener("mousemove", updateMousePosition);
       window.removeEventListener("mouseover", handleMouseOver);
     };

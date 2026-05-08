@@ -46,8 +46,10 @@
   
     .glass-card {
       background: rgba(255, 255, 255, 0.7);
-      @apply backdrop-blur-xl border border-black/5;
+      @apply backdrop-blur-md lg:backdrop-blur-xl border border-black/5;
+      will-change: backdrop-filter;
     }
+
   
     .dark .glass-card {
       background: rgba(29, 29, 31, 0.6);
@@ -71,8 +73,23 @@
   
     #scroll-progress {
       @apply fixed top-0 left-0 h-[2px] bg-primary z-[60] transition-all;
+      will-change: transform;
     }
   }
+
+  /* Performance Utilities */
+  .will-change-transform {
+    will-change: transform;
+  }
+  
+  .will-change-opacity {
+    will-change: opacity;
+  }
+
+  .content-visibility-auto {
+    content-visibility: auto;
+  }
+
   
   /* Custom Scrollbar */
   ::-webkit-scrollbar {
@@ -144,8 +161,29 @@ p {
   }
 }
 
+@media (max-width: 1024px) {
+  .glass-card, 
+  .backdrop-blur-sm, 
+  .backdrop-blur-md, 
+  .backdrop-blur-lg, 
+  .backdrop-blur-xl, 
+  .backdrop-blur-2xl, 
+  .backdrop-blur-3xl {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .blur-[40px],
+  .blur-[100px],
+  .blur-[120px],
+  .blur-[150px] {
+    filter: none !important;
+  }
+}
+
 @media (min-width: 1024px) {
   body, a, button, input, textarea, select {
     cursor: none !important;
   }
 }
+

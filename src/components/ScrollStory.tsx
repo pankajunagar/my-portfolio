@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
+
 import { motion, useScroll, useTransform, useSpring, MotionValue } from "framer-motion";
 
 const stories = [
@@ -61,9 +62,10 @@ function StoryText({ story, index, total, progress }: StoryTextProps) {
       }`}
     >
       <div className="flex mb-6">
-        <span className="px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] bg-primary/20 text-primary border border-primary/30 backdrop-blur-md">
+        <span className="px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] bg-primary/20 text-primary border border-primary/30 backdrop-blur-md lg:backdrop-blur-md">
           Core Capability
         </span>
+
       </div>
       
       <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight tracking-tight">
@@ -80,10 +82,11 @@ function StoryText({ story, index, total, progress }: StoryTextProps) {
       
       <div className="flex flex-wrap gap-4">
         {story.features.map((f: string) => (
-          <div key={f} className="flex items-center gap-3 px-5 py-2.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl text-xs font-bold text-white/70 hover:bg-white/10 hover:border-white/20 transition-all">
+          <div key={f} className="flex items-center gap-3 px-5 py-2.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm lg:backdrop-blur-xl text-xs font-bold text-white/70 hover:bg-white/10 hover:border-white/20 transition-all">
             <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${story.accent}`} />
             {f}
           </div>
+
         ))}
       </div>
     </motion.div>
@@ -118,9 +121,9 @@ function StoryVisual({ story, index, total, progress }: StoryTextProps) {
     >
       <div className="relative w-full max-w-xl aspect-[16/11] group">
         <motion.div
-          animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
+          animate={typeof window !== 'undefined' && window.innerWidth >= 1024 ? { y: [0, -20, 0], rotate: [0, 5, 0] } : {}}
           transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-10 -left-10 z-20 glass-card p-4 rounded-2xl border-white/20 shadow-2xl backdrop-blur-3xl"
+          className="absolute -top-10 -left-10 z-20 glass-card p-4 rounded-2xl border-white/20 shadow-2xl backdrop-blur-md lg:backdrop-blur-3xl hidden sm:block"
         >
            <div className="flex items-center gap-3">
               <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${story.accent}`} />
@@ -129,9 +132,9 @@ function StoryVisual({ story, index, total, progress }: StoryTextProps) {
         </motion.div>
 
         <motion.div
-          animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
+          animate={typeof window !== 'undefined' && window.innerWidth >= 1024 ? { y: [0, 20, 0], rotate: [0, -5, 0] } : {}}
           transition={{ duration: 1.25, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute -bottom-10 -right-10 z-20 glass-card p-6 rounded-2xl border-white/20 shadow-2xl backdrop-blur-3xl"
+          className="absolute -bottom-10 -right-10 z-20 glass-card p-6 rounded-2xl border-white/20 shadow-2xl backdrop-blur-md lg:backdrop-blur-3xl hidden sm:block"
         >
            <div className="space-y-2">
               <div className="w-24 h-3 bg-white/10 rounded-full" />
@@ -139,7 +142,9 @@ function StoryVisual({ story, index, total, progress }: StoryTextProps) {
            </div>
         </motion.div>
 
-        <div className={`absolute inset-0 bg-gradient-to-br ${story.accent} opacity-30 blur-[100px] rounded-full scale-125 transition-all duration-700`} />
+
+        <div className={`absolute inset-0 bg-gradient-to-br ${story.accent} opacity-30 blur-[40px] lg:blur-[100px] rounded-full scale-125 transition-all duration-700`} />
+
         
         <div className="relative glass-card p-1 rounded-[40px] border-white/20 shadow-[0_0_100px_rgba(3,142,199,0.2)] overflow-hidden h-full">
           <Image
@@ -162,11 +167,63 @@ export default function ScrollStory() {
     offset: ["start start", "end end"],
   });
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   const smoothProgress = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001,
   });
+
+  if (isMobile) {
+    return (
+      <section ref={containerRef} className="relative bg-black py-24">
+        <div className="container-max px-4 space-y-20">
+          <div className="text-center mb-16">
+            <span className="px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] bg-primary/20 text-primary border border-primary/30">
+              Capabilities
+            </span>
+            <h2 className="text-4xl font-bold text-white mt-4">Case Studies</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 gap-16">
+            {stories.map((story) => (
+              <div key={story.id} className="space-y-8">
+                <div className="relative aspect-[4/3] w-full rounded-3xl overflow-hidden border border-white/10 glass-card p-1">
+                  <Image
+                    src={story.image}
+                    alt={story.title}
+                    fill
+                    className="object-cover rounded-[22px]"
+                  />
+                </div>
+                <div className="space-y-4">
+                  <h3 className="text-3xl font-bold text-white">{story.title}</h3>
+                  <p className="text-white/60 leading-relaxed">
+                    {story.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {story.features.map((f) => (
+                      <span key={f} className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-[10px] font-bold text-white/70">
+                        {f}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section ref={containerRef} className="relative h-[300vh] bg-black">

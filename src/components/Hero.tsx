@@ -29,7 +29,9 @@ export default function Hero() {
       speed: number;
       opacity: number;
     }[] = [];
-    const particleCount = 150;
+    const isMobile = window.innerWidth < 1024;
+    const particleCount = isMobile ? 40 : 150;
+
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -118,32 +120,33 @@ export default function Hero() {
       />
       <div className="absolute inset-0 z-[1] bg-[radial-gradient(circle_at_50%_40%,rgba(3,142,199,0.15)_0%,transparent_70%)]" />
 
-      {/* Moving Nebula Glows */}
+      {/* Moving Nebula Glows - Hidden on mobile for performance */}
       <motion.div
-        animate={{
+        animate={typeof window !== 'undefined' && window.innerWidth >= 1024 ? {
           scale: [1, 1.2, 1],
           opacity: [0.3, 0.5, 0.3],
           x: [0, 50, 0],
           y: [0, -30, 0],
-        }}
+        } : {}}
         transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
-        className="absolute top-1/4 -left-20 w-96 h-96 bg-primary/20 blur-[120px] rounded-full z-0"
+        className="absolute top-1/4 -left-20 w-96 h-96 bg-primary/20 blur-[120px] rounded-full z-0 hidden lg:block"
       />
       <motion.div
-        animate={{
+        animate={typeof window !== 'undefined' && window.innerWidth >= 1024 ? {
           scale: [1.2, 1, 1.2],
           opacity: [0.2, 0.4, 0.2],
           x: [0, -50, 0],
           y: [0, 30, 0],
-        }}
+        } : {}}
         transition={{
           duration: 3,
           repeat: Infinity,
           ease: "linear",
           delay: 1,
         }}
-        className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-violet-500/10 blur-[150px] rounded-full z-0"
+        className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-violet-500/10 blur-[150px] rounded-full z-0 hidden lg:block"
       />
+
 
       <div className="container-max relative z-20 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center pt-24 lg:pt-32 pb-16 lg:pb-20">
         {/* Left: Premium Framed Image */}
