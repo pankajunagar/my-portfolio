@@ -11,16 +11,13 @@ function EditorialProjectCard({ project }: { project: Project }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   
-  // Performance: Disable scroll tracking on mobile
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 1024;
-  
   const { scrollYProgress } = useScroll({ 
     target: ref, 
-    offset: ["start end", "end start"],
-    disabled: isMobile // Optimization
+    offset: ["start end", "end start"]
   });
   
   const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 1024;
 
   return (
     <motion.div
