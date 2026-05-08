@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
-
 import { motion, useScroll, useTransform, useSpring, MotionValue } from "framer-motion";
 
 const stories = [
@@ -65,7 +64,6 @@ function StoryText({ story, index, total, progress }: StoryTextProps) {
         <span className="px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] bg-primary/20 text-primary border border-primary/30 backdrop-blur-md lg:backdrop-blur-md">
           Core Capability
         </span>
-
       </div>
       
       <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight tracking-tight">
@@ -86,7 +84,6 @@ function StoryText({ story, index, total, progress }: StoryTextProps) {
             <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${story.accent}`} />
             {f}
           </div>
-
         ))}
       </div>
     </motion.div>
@@ -142,10 +139,8 @@ function StoryVisual({ story, index, total, progress }: StoryTextProps) {
            </div>
         </motion.div>
 
-
         <div className={`absolute inset-0 bg-gradient-to-br ${story.accent} opacity-30 blur-[40px] lg:blur-[100px] rounded-full scale-125 transition-all duration-700`} />
 
-        
         <div className="relative glass-card p-1 rounded-[40px] border-white/20 shadow-[0_0_100px_rgba(3,142,199,0.2)] overflow-hidden h-full">
           <Image
             src={story.image}
@@ -193,31 +188,71 @@ export default function ScrollStory() {
             <h2 className="text-4xl font-bold text-white mt-4">Case Studies</h2>
           </div>
           
-          <div className="grid grid-cols-1 gap-16">
+          <div className="grid grid-cols-1 gap-24">
             {stories.map((story) => (
-              <div key={story.id} className="space-y-8">
-                <div className="relative aspect-[4/3] w-full rounded-3xl overflow-hidden border border-white/10 glass-card p-1">
-                  <Image
-                    src={story.image}
-                    alt={story.title}
-                    fill
-                    className="object-cover rounded-[22px]"
-                  />
-                </div>
-                <div className="space-y-4">
-                  <h3 className="text-3xl font-bold text-white">{story.title}</h3>
-                  <p className="text-white/60 leading-relaxed">
+              <div key={story.id} className="space-y-10">
+                {/* Visual for mobile with entry animation */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                  className="relative aspect-[4/3] w-full max-w-md mx-auto"
+                >
+                  <div className={`absolute inset-0 bg-gradient-to-br ${story.accent} opacity-20 blur-[60px] rounded-full scale-110`} />
+                  <div className="relative glass-card p-1 rounded-3xl border-white/10 shadow-2xl overflow-hidden h-full">
+                    <div className="relative w-full h-full overflow-hidden rounded-[22px]">
+                      <motion.div
+                        initial={{ scale: 1.2 }}
+                        whileInView={{ scale: 1 }}
+                        transition={{ duration: 1.5, ease: "easeOut" }}
+                        className="w-full h-full"
+                      >
+                        <Image
+                          src={story.image}
+                          alt={story.title}
+                          fill
+                          className="object-cover opacity-90 brightness-110"
+                        />
+                      </motion.div>
+                      
+                      {/* Light Sweep for mobile */}
+                      <motion.div
+                        animate={{ x: ["-100%", "200%"] }}
+                        transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-12"
+                      />
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Text for mobile with staggered reveal */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="space-y-6 text-center"
+                >
+                  <h3 className="text-3xl font-bold text-white tracking-tight">{story.title}</h3>
+                  <p className="text-white/60 leading-relaxed max-w-sm mx-auto">
                     {story.description}
                   </p>
-                  <div className="flex flex-wrap gap-2">
-                    {story.features.map((f) => (
-                      <span key={f} className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-[10px] font-bold text-white/70">
+                  <div className="flex flex-wrap justify-center gap-3">
+                    {story.features.map((f, i) => (
+                      <motion.span 
+                        key={f} 
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.3 + i * 0.1 }}
+                        className="px-4 py-1.5 rounded-xl bg-white/5 border border-white/10 text-[10px] font-bold text-white/70"
+                      >
                         {f}
-                      </span>
+                      </motion.span>
                     ))}
                   </div>
+                  </motion.div>
                 </div>
-              </div>
             ))}
           </div>
         </div>
