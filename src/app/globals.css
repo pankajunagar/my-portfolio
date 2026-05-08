@@ -161,25 +161,6 @@ p {
   }
 }
 
-@media (max-width: 1024px) {
-  .glass-card, 
-  .backdrop-blur-sm, 
-  .backdrop-blur-md, 
-  .backdrop-blur-lg, 
-  .backdrop-blur-xl, 
-  .backdrop-blur-2xl, 
-  .backdrop-blur-3xl {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-  }
-
-  .blur-[40px],
-  .blur-[100px],
-  .blur-[120px],
-  .blur-[150px] {
-    filter: none !important;
-  }
-}
 
 @media (min-width: 1024px) {
   body, a, button, input, textarea, select {
