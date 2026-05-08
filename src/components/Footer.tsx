@@ -146,9 +146,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="mt-16 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-1.5 text-muted-foreground text-sm font-medium">
-            <span>© {currentYear} Designed & Built with</span>
-            <Heart className="w-4 h-4 text-red-500 fill-red-500 mx-1" />
-            <span>using Next.js & Framer Motion</span>
+            <span>Copyright © {currentYear} Pankaj Unagar - All rights reserved</span>
           </div>
         </div>
       </div>
