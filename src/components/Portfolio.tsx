@@ -10,7 +10,16 @@ const MotionImage = motion.create(Image);
 function EditorialProjectCard({ project }: { project: Project }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  
+  // Performance: Disable scroll tracking on mobile
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 1024;
+  
+  const { scrollYProgress } = useScroll({ 
+    target: ref, 
+    offset: ["start end", "end start"],
+    disabled: isMobile // Optimization
+  });
+  
   const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
   return (
@@ -18,13 +27,13 @@ function EditorialProjectCard({ project }: { project: Project }) {
       ref={ref}
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.2, ease: [0.21, 0.47, 0.32, 0.98] }}
-      className="group block w-full relative h-[45vh] min-h-[350px] max-h-[500px] rounded-3xl overflow-hidden mb-8"
+      transition={{ duration: 0.3, ease: [0.21, 0.47, 0.32, 0.98] }}
+      className="group block w-full relative aspect-[16/10] sm:h-[45vh] min-h-[400px] max-h-[500px] rounded-3xl overflow-hidden mb-8"
     >
       {/* Background Image with Parallax */}
       <div className="absolute inset-0 overflow-hidden rounded-3xl bg-white/[0.02]">
         <MotionImage 
-          style={{ y }}
+          style={isMobile ? { y: 0 } : { y }}
           src={project.image} 
           alt={project.title} 
           fill

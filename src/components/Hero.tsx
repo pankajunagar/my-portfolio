@@ -17,8 +17,9 @@ export default function Hero() {
 
   useEffect(() => {
     // --- Animated Galaxy / Starfield Logic ---
+    const isMobile = window.innerWidth < 1024;
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas || isMobile) return; // Completely disable canvas on mobile
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
@@ -29,8 +30,7 @@ export default function Hero() {
       speed: number;
       opacity: number;
     }[] = [];
-    const isMobile = window.innerWidth < 1024;
-    const particleCount = isMobile ? 40 : 150;
+    const particleCount = 150;
 
 
     const resize = () => {
@@ -76,30 +76,36 @@ export default function Hero() {
     init();
     animate();
 
-    // GSAP Parallax with stability
-    const portraitTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top top",
-        end: "bottom top",
-        scrub: 1, 
-        onUpdate: (self) => {
-          if (self.progress < 0.01) {
-            gsap.set(portraitRef.current, { y: 0 });
+    // GSAP Parallax - Desktop Only
+    let portraitTl: gsap.core.Timeline | null = null;
+    if (!isMobile) {
+      portraitTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1, 
+          onUpdate: (self) => {
+            if (self.progress < 0.01) {
+              gsap.set(portraitRef.current, { y: 0 });
+            }
           }
-        }
-      },
-    });
+        },
+      });
 
-    portraitTl.to(portraitRef.current, {
-      y: 100, // Slightly more pronounced parallax
-      ease: "none"
-    });
+      portraitTl.to(portraitRef.current, {
+        y: 100,
+        ease: "none"
+      });
+    }
 
     // Refresh triggers to account for navbar transition
     ScrollTrigger.refresh();
 
-    return () => window.removeEventListener("resize", resize);
+    return () => {
+      window.removeEventListener("resize", resize);
+      if (portraitTl) portraitTl.kill();
+    };
   }, []);
 
   const scrollToSection = (id: string) => {

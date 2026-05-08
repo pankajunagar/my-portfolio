@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform, useSpring, MotionValue } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, useInView, MotionValue } from "framer-motion";
 
 const stories = [
   {
@@ -193,28 +193,23 @@ export default function ScrollStory() {
               <div key={story.id} className="space-y-10">
                 {/* Visual for mobile with entry animation */}
                 <motion.div 
-                  initial={{ opacity: 0, y: 40, scale: 0.95 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
                   className="relative aspect-[4/3] w-full max-w-md mx-auto"
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${story.accent} opacity-20 blur-[60px] rounded-full scale-110`} />
-                  <div className="relative glass-card p-1 rounded-3xl border-white/10 shadow-2xl overflow-hidden h-full">
+                  <div className="relative glass-card p-1 rounded-3xl border-white/10 shadow-2xl overflow-hidden h-full min-h-[250px] bg-white/[0.02]">
                     <div className="relative w-full h-full overflow-hidden rounded-[22px]">
-                      <motion.div
-                        initial={{ scale: 1.2 }}
-                        whileInView={{ scale: 1 }}
-                        transition={{ duration: 1.5, ease: "easeOut" }}
-                        className="w-full h-full"
-                      >
+                      <div className="w-full h-full">
                         <Image
                           src={story.image}
                           alt={story.title}
                           fill
                           className="object-cover opacity-90 brightness-110"
                         />
-                      </motion.div>
+                      </div>
                       
                       {/* Light Sweep for mobile */}
                       <motion.div
@@ -251,8 +246,8 @@ export default function ScrollStory() {
                       </motion.span>
                     ))}
                   </div>
-                  </motion.div>
-                </div>
+                </motion.div>
+              </div>
             ))}
           </div>
         </div>
