@@ -49,7 +49,6 @@ export default function Contact() {
         alert("Failed to send message. Please try again later.");
       }
     } catch (error) {
-      console.error("Error submitting form:", error);
       alert("Something went wrong. Please check your connection.");
     } finally {
       setIsSubmitting(false);

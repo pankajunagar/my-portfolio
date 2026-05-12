@@ -11,7 +11,6 @@ export async function POST(req: Request) {
     const { name, email, subject, message } = await req.json();
 
     if (!process.env.RESEND_API_KEY) {
-      console.error('RESEND_API_KEY is missing');
       return NextResponse.json({ error: 'Email service configuration error' }, { status: 500 });
     }
 
@@ -84,7 +83,6 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
-    console.error('Error sending email:', error);
     return NextResponse.json({ error: 'Failed to send message' }, { status: 500 });
   }
 }
